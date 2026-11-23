@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multiverse Gaming Zone & Cafe | PS5 • Racing Sim • RC Play • Café</title>
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            canvas: '#FAFAFA',
+            pure: '#FFFFFF',
+            subtle: '#F4F4F5',
+            ink: '#0A0A0C',
+            carbon: '#141417',
+            borderlight: '#E4E4E7',
+            crimson: '#DC2626',
+            crimsonhover: '#B91C1C',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-canvas text-ink font-sans antialiased selection:bg-red-600 selection:text-white">
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-borderlight">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <!-- Brand Identity -->
+      <a href="#top" onclick="switchMainView('customer')" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-ink flex items-center justify-center shadow-sm border border-zinc-800 relative overflow-hidden">
+          <span class="font-display font-extrabold text-lg tracking-tighter text-white">M</span>
+          <span class="absolute bottom-0 inset-x-0 h-1 bg-red-600"></span>
+        </div>
+        <div>
+          <span class="font-display font-extrabold text-base sm:text-lg tracking-tight text-ink block leading-none">MULTIVERSE</span>
+          <span class="text-[10px] tracking-[0.18em] text-zinc-500 uppercase font-semibold block mt-0.5">Gaming • Racing • RC • Café</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links (Customer View) -->
+      <nav id="customerNavLinks" class="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-600">
+        <a href="#zones" class="hover:text-ink transition">Zones &amp; Rates</a>
+        <a href="#posters" class="hover:text-ink transition">Games Library</a>
+        <a href="#booking" class="hover:text-ink transition">Slot Booking</a>
+        <a href="#cafe" class="hover:text-ink transition">Café &amp; QR Menu</a>
+        <a href="#tournaments" class="hover:text-ink transition">Tournaments</a>
+      </nav>
+
+      <!-- View Switcher CTA -->
+      <div class="flex items-center gap-2.5">
+        <button id="viewToggleBtn" onclick="toggleAdminMode()" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-ink hover:bg-zinc-800 text-white transition flex items-center gap-2 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          <span id="viewToggleText">Owner Admin Demo</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOAST NOTIFICATION BANNER -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+
+  <!-- ===================================================================== -->
+  <!-- CUSTOMER STOREFRONT VIEW (CRISP WHITE / BLACK / GREY / RED)           -->
+  <!-- ===================================================================== -->
+  <main id="customerView" class="block">
+
+    <!-- HERO SECTION: HIGH-CONTRAST EDITORIAL WHITE + CARBON + RED -->
+    <section id="top" class="relative overflow-hidden bg-white border-b border-borderlight">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- Left Editorial Copy -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-subtle border border-borderlight text-xs font-bold tracking-wider uppercase text-zinc-700">
+              <span class="w-2 h-2 rounded-full bg-red-600"></span>
+              <span>PS5 4K Lounges</span>
+              <span class="text-zinc-300">•</span>
+              <span>Racing Simulators</span>
+              <span class="text-zinc-300">•</span>
+              <span>RC Arena</span>
+              <span class="text-zinc-300">•</span>
+              <span>Café</span>
+            </div>
+
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-ink leading-[1.06]">
+              Play Harder. Race Faster. <span class="text-red-600">Fuel Up.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-zinc-600 max-w-2xl leading-relaxed">
+              Experience couch-co-op 4K PS5 battles, direct-drive racing cockpits, an indoor off-road RC track, and freshly brewed specialty coffee &amp; gamer platters delivered right to your controller.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3.5 pt-1">
+              <a href="#booking" class="px-6 py-3.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm sm:text-base transition shadow-lg shadow-red-600/20">
+                Book Your Station (₹100 UPI Lock)
+              </a>
+              <a href="#cafe" class="px-6 py-3.5 rounded-xl bg-subtle hover:bg-zinc-200 text-ink font-bold text-sm sm:text-base border border-borderlight transition">
+                Explore Café Menu
+              </a>
+            </div>
+
+            <!-- Live Floor Status Strip -->
+            <div class="pt-3">
+              <div class="text-[11px] font-bold uppercase tracking-widest text-zinc-500 mb-2.5 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span>Live Floor Availability (Synced with Admin Panel)</span>
+              </div>
+              <div id="heroLiveTicker" class="flex flex-wrap gap-2">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Feature Visual Card: High-Contrast Carbon Frame with Game Posters -->
+          <div class="lg:col-span-5">
+            <div class="bg-ink text-white border border-zinc-800 rounded-2xl p-4 sm:p-5 shadow-2xl">
+              <div class="flex items-center justify-between mb-3.5">
+                <span class="text-xs font-bold uppercase tracking-wider text-zinc-400">Featured Titles on 4K &amp; Sim</span>
+                <span class="text-xs font-bold text-white bg-red-600 px-2.5 py-0.5 rounded-full">From ₹150/hr</span>
+              </div>
+
+              <!-- 3-Poster Editorial Grid -->
+              <div class="grid grid-cols-3 gap-3">
+                <!-- GTA VI Poster Card -->
+                <div class="group relative rounded-xl overflow-hidden aspect-[3/4] border border-zinc-800 bg-carbon">
+                  <img
+                    src="https://images.unsplash.com/photo-1605898835373-02f740d08d1f?auto=format&fit=crop&w=600&q=80"
+                    onerror="this.src='https://placehold.co/400x530/141417/DC2626?text=GTA+VI'"
+                    alt="GTA VI Vice City Vibes"
+                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                  <div class="absolute top-2 left-2 bg-red-600 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase">PS5 4K</div>
+                  <div class="absolute bottom-2.5 left-2.5 right-2.5">
+                    <p class="font-display font-extrabold text-white text-sm leading-tight">GTA V &amp; VI</p>
+                    <p class="text-[10px] text-zinc-300 font-medium">Open World</p>
+                  </div>
+                </div>
+
+                <!-- Forza Horizon 5 Poster Card -->
+                <div class="group relative rounded-xl overflow-hidden aspect-[3/4] border border-zinc-800 bg-carbon">
+                  <img
+                    src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=600&q=80"
+                    onerror="this.src='https://placehold.co/400x530/141417/FFFFFF?text=FORZA+HORIZON'"
+                    alt="Forza Horizon Racing"
+                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                  <div class="absolute top-2 left-2 bg-white text-ink text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase">SIM RIG</div>
+                  <div class="absolute bottom-2.5 left-2.5 right-2.5">
+                    <p class="font-display font-extrabold text-white text-sm leading-tight">FORZA HORIZON 5</p>
+                    <p class="text-[10px] text-zinc-300 font-medium">Force Feedback</p>
+                  </div>
+                </div>
+
+                <!-- EA FC 25 / FIFA Poster Card -->
+                <div class="group relative rounded-xl overflow-hidden aspect-[3/4] border border-zinc-800 bg-carbon">
+                  <img
+                    src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80"
+                    onerror="this.src='https://placehold.co/400x530/141417/DC2626?text=EA+FC+25'"
+                    alt="EA FC 25 Stadium"
+                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                  <div class="absolute top-2 left-2 bg-red-600 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded uppercase">4-PLAYER</div>
+                  <div class="absolute bottom-2.5 left-2.5 right-2.5">
+                    <p class="font-display font-extrabold text-white text-sm leading-tight">EA FC 25 (FIFA)</p>
+                    <p class="text-[10px] text-zinc-300 font-medium">Squad Battles</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3.5 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
+                <span>100% UPI Advance adjusted in final bill</span>
+                <a href="#posters" class="text-white hover:text-red-400 font-semibold transition">View all 25+ titles →</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: 4 EXPERIENCE ZONES (PHOTOGRAPHIC CARDS ON LIGHT GREY CANVAS) -->
+    <section id="zones" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-red-600">01 / Four Pillars Under One Roof</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-ink mt-1">Choose Your Arena</h2>
+        </div>
+        <p class="text-sm text-zinc-600 max-w-md">Transparent hourly pricing, zero hidden charges, and instant slot locking with a flat ₹100 UPI advance.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Zone 1: PS5 Gaming Lounges -->
+        <div class="bg-white border border-borderlight rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-ink/40 hover:shadow-xl transition">
+          <div>
+            <div class="relative h-56 overflow-hidden bg-ink">
+              <img
+                src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=1000&q=80"
+                onerror="this.src='https://placehold.co/800x450/141417/FFFFFF?text=PS5+4K+Gaming+Lounge'"
+                alt="PS5 Gaming Lounge"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-95"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+              <div class="absolute top-4 left-4 bg-ink/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider">
+                Gaming Lounge
+              </div>
+              <div class="absolute bottom-4 right-4 bg-white border border-borderlight px-3.5 py-1.5 rounded-xl text-right shadow-md">
+                <span class="font-display font-extrabold text-xl text-ink">₹150</span>
+                <span class="text-[11px] text-zinc-500 block leading-none">per hour</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-2xl text-ink">PS5 4K Couch Lounges</h3>
+              <p class="text-sm text-zinc-600 mt-1.5">65-inch 4K 120Hz displays, plush seating for up to 4 players, and DualSense haptic controllers.</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">EA FC 25</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">GTA V / VI</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">Tekken 8</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">Mortal Kombat 1</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 py-4 bg-subtle/60 flex items-center justify-between border-t border-borderlight">
+            <span class="text-xs font-medium text-zinc-600">3 Private Pods Available</span>
+            <a href="#booking" onclick="preselectStation('PS5-01')" class="px-4 py-2 rounded-xl bg-ink hover:bg-zinc-800 text-white font-bold text-xs transition">
+              Book PS5 Pod →
+            </a>
+          </div>
+        </div>
+
+        <!-- Zone 2: Pro Racing Simulators -->
+        <div class="bg-white border border-borderlight rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-red-600/50 hover:shadow-xl transition">
+          <div>
+            <div class="relative h-56 overflow-hidden bg-ink">
+              <img
+                src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=80"
+                onerror="this.src='https://placehold.co/800x450/141417/DC2626?text=Pro+Racing+Simulators'"
+                alt="Racing Simulator Cockpit"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-95"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+              <div class="absolute top-4 left-4 bg-red-600 px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider">
+                Racing Simulators
+              </div>
+              <div class="absolute bottom-4 right-4 bg-white border border-borderlight px-3.5 py-1.5 rounded-xl text-right shadow-md">
+                <span class="font-display font-extrabold text-xl text-ink">₹250</span>
+                <span class="text-[11px] text-zinc-500 block leading-none">per hour</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-2xl text-ink">Pro Racing Sim Cockpits</h3>
+              <p class="text-sm text-zinc-600 mt-1.5">Bucket racing seats, direct-drive force-feedback steering wheels, load-cell pedals, and wraparound screens.</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">Forza Horizon 5</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">F1 24</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">Assetto Corsa</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">Gran Turismo 7</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 py-4 bg-subtle/60 flex items-center justify-between border-t border-borderlight">
+            <span class="text-xs font-medium text-zinc-600">2 Full-Motion Cockpits</span>
+            <a href="#booking" onclick="preselectStation('Sim-01')" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs transition">
+              Book Racing Sim →
+            </a>
+          </div>
+        </div>
+
+        <!-- Zone 3: RC Play Zone -->
+        <div class="bg-white border border-borderlight rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-ink/40 hover:shadow-xl transition">
+          <div>
+            <div class="relative h-56 overflow-hidden bg-ink">
+              <img
+                src="https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=1000&q=80"
+                onerror="this.src='https://placehold.co/800x450/141417/FFFFFF?text=Indoor+RC+Play+Arena'"
+                alt="RC Offroad Arena"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-95"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+              <div class="absolute top-4 left-4 bg-ink/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider">
+                RC Play Arena
+              </div>
+              <div class="absolute bottom-4 right-4 bg-white border border-borderlight px-3.5 py-1.5 rounded-xl text-right shadow-md">
+                <span class="font-display font-extrabold text-xl text-ink">₹200</span>
+                <span class="text-[11px] text-zinc-500 block leading-none">per session</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-2xl text-ink">Indoor RC Dirt &amp; Drift Zone</h3>
+              <p class="text-sm text-zinc-600 mt-1.5">Custom-built indoor construction &amp; off-road RC track with excavators, dumpers, and high-speed drift cars.</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">RC Excavators</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">4x4 Crawlers</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">LED Drift Track</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 py-4 bg-subtle/60 flex items-center justify-between border-t border-borderlight">
+            <span class="text-xs font-medium text-zinc-600">20-Min Guided Track Session</span>
+            <a href="#booking" onclick="preselectStation('RC-Track')" class="px-4 py-2 rounded-xl bg-ink hover:bg-zinc-800 text-white font-bold text-xs transition">
+              Book RC Session →
+            </a>
+          </div>
+        </div>
+
+        <!-- Zone 4: In-House Café Lounge -->
+        <div class="bg-white border border-borderlight rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-ink/40 hover:shadow-xl transition">
+          <div>
+            <div class="relative h-56 overflow-hidden bg-ink">
+              <img
+                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=80"
+                onerror="this.src='https://placehold.co/800x450/141417/FFFFFF?text=In-House+Specialty+Cafe'"
+                alt="Specialty Coffee and Cafe"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-95"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent"></div>
+              <div class="absolute top-4 left-4 bg-ink/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider">
+                In-House Café
+              </div>
+              <div class="absolute bottom-4 right-4 bg-white border border-borderlight px-3.5 py-1.5 rounded-xl text-right shadow-md">
+                <span class="font-display font-extrabold text-xl text-ink">₹299</span>
+                <span class="text-[11px] text-zinc-500 block leading-none">combos from</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-2xl text-ink">Artisanal Coffee &amp; Gamer Kitchen</h3>
+              <p class="text-sm text-zinc-600 mt-1.5">Scan the QR sticker on your PS5 booth or Sim rig to order mess-free finger foods, shakes, and nitro cold brews.</p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">Nitro Cold Coffee</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">Peri-Peri Platters</span>
+                <span class="px-2.5 py-1 rounded-lg bg-subtle border border-borderlight text-xs font-medium text-zinc-700">Thick Shakes</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 py-4 bg-subtle/60 flex items-center justify-between border-t border-borderlight">
+            <span class="text-xs font-medium text-zinc-600">Delivered Directly to Seat</span>
+            <a href="#cafe" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs transition">
+              Order to Your Station →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: BLOCKBUSTER GAME POSTERS SHOWCASE (HIGH-CONTRAST BLACK BAND) -->
+    <section id="posters" class="py-16 bg-ink text-white border-y border-zinc-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-red-500">02 / Curated 4K &amp; Sim Library</span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">Installed &amp; Ready to Launch</h2>
+          </div>
+          <span class="text-xs text-zinc-400">Updated weekly with latest roster &amp; track DLCs</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+          <!-- Poster 1: GTA VI -->
+          <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] border border-zinc-800 bg-carbon shadow-lg">
+            <img src="https://images.unsplash.com/photo-1605898835373-02f740d08d1f?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/400x550/141417/DC2626?text=GTA+VI'" alt="GTA VI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-red-600 text-white text-[10px] font-extrabold uppercase">PS5 Exclusive</span>
+            <div class="absolute bottom-3.5 left-3.5 right-3.5">
+              <p class="text-[11px] text-zinc-300 font-semibold uppercase tracking-wider">Action • Open World</p>
+              <h3 class="font-display font-extrabold text-lg text-white leading-tight mt-0.5">Grand Theft Auto V &amp; VI</h3>
+            </div>
+          </div>
+
+          <!-- Poster 2: Forza Horizon 5 -->
+          <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] border border-zinc-800 bg-carbon shadow-lg">
+            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/400x550/141417/FFFFFF?text=FORZA+HORIZON+5'" alt="Forza Horizon 5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-white text-ink text-[10px] font-extrabold uppercase">Sim Cockpit</span>
+            <div class="absolute bottom-3.5 left-3.5 right-3.5">
+              <p class="text-[11px] text-zinc-300 font-semibold uppercase tracking-wider">Open-World Racing</p>
+              <h3 class="font-display font-extrabold text-lg text-white leading-tight mt-0.5">Forza Horizon 5</h3>
+            </div>
+          </div>
+
+          <!-- Poster 3: EA FC 25 (FIFA) -->
+          <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] border border-zinc-800 bg-carbon shadow-lg">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/400x550/141417/DC2626?text=EA+FC+25'" alt="EA FC 25" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-red-600 text-white text-[10px] font-extrabold uppercase">2v2 Couch Co-Op</span>
+            <div class="absolute bottom-3.5 left-3.5 right-3.5">
+              <p class="text-[11px] text-zinc-300 font-semibold uppercase tracking-wider">Football • Tournaments</p>
+              <h3 class="font-display font-extrabold text-lg text-white leading-tight mt-0.5">EA Sports FC 25 (FIFA)</h3>
+            </div>
+          </div>
+
+          <!-- Poster 4: F1 24 -->
+          <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] border border-zinc-800 bg-carbon shadow-lg">
+            <img src="https://images.unsplash.com/photo-1532906619279-a4b7267faa66?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/400x550/141417/FFFFFF?text=F1+24'" alt="F1 24" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-white text-ink text-[10px] font-extrabold uppercase">Time Trial</span>
+            <div class="absolute bottom-3.5 left-3.5 right-3.5">
+              <p class="text-[11px] text-zinc-300 font-semibold uppercase tracking-wider">Formula Motorsport</p>
+              <h3 class="font-display font-extrabold text-lg text-white leading-tight mt-0.5">EA Sports F1 24</h3>
+            </div>
+          </div>
+
+          <!-- Poster 5: Tekken 8 -->
+          <div class="group relative rounded-2xl overflow-hidden aspect-[3/4] border border-zinc-800 bg-carbon shadow-lg col-span-2 sm:col-span-1">
+            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/400x550/141417/DC2626?text=TEKKEN+8'" alt="Tekken 8" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-red-600 text-white text-[10px] font-extrabold uppercase">1v1 Arcade</span>
+            <div class="absolute bottom-3.5 left-3.5 right-3.5">
+              <p class="text-[11px] text-zinc-300 font-semibold uppercase tracking-wider">Competitive Fighter</p>
+              <h3 class="font-display font-extrabold text-lg text-white leading-tight mt-0.5">Tekken 8 &amp; MK1</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE SLOT BOOKING WITH ATOMIC LOCK & UPI ADVANCE -->
+    <section id="booking" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-red-600">03 / Real-Time Atomic Slot Lock</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-ink mt-1">Lock Your Station in 60 Seconds</h2>
+        <p class="text-sm text-zinc-600 mt-1.5">Select an open PS5, Racing Sim, or RC slot. Tapping Pay locks your station exclusively for 5 minutes during UPI checkout—preventing double-bookings.</p>
+      </div>
+
+      <!-- Smart Conflict Suggestion Banner (Hidden until triggered) -->
+      <div id="conflictBanner" class="hidden mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-start gap-3">
+          <span class="text-red-600 font-bold text-lg">⚠️</span>
+          <div>
+            <p id="conflictMessage" class="text-sm font-bold text-ink">That station is currently locked or marked booked by the lounge desk.</p>
+            <p class="text-xs text-zinc-600 mt-0.5">Want to switch immediately to an open station at the same time?</p>
+          </div>
+        </div>
+        <button id="switchAlternativeBtn" onclick="applyAlternativeStation()" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs whitespace-nowrap">
+          Switch to Open Station
+        </button>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+        <!-- Left Controls (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6 bg-white border border-borderlight rounded-2xl p-5 sm:p-7 shadow-sm">
+          
+          <!-- Step 1: Select Station -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-zinc-500 block mb-3">1. Select Zone / Station (Live Admin Sync)</label>
+            <div id="stationSelectorGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Step 2: Date, Time & Duration -->
+          <div class="pt-4 border-t border-borderlight">
+            <label class="text-xs font-bold uppercase tracking-wider text-zinc-500 block mb-3">2. Pick Date, Slot &amp; Duration</label>
+            <div class="grid grid-cols-3 gap-2.5 mb-3">
+              <button type="button" onclick="selectBookingDate('Today, 23 Nov', this)" class="date-btn active-date px-3 py-2.5 rounded-xl border border-ink bg-ink text-white text-xs font-bold">Today, 23 Nov</button>
+              <button type="button" onclick="selectBookingDate('Tue, 24 Nov', this)" class="date-btn px-3 py-2.5 rounded-xl border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold hover:border-zinc-400">Tue, 24 Nov</button>
+              <button type="button" onclick="selectBookingDate('Wed, 25 Nov', this)" class="date-btn px-3 py-2.5 rounded-xl border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold hover:border-zinc-400">Wed, 25 Nov</button>
+            </div>
+
+            <div class="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-4">
+              <button type="button" onclick="selectBookingTime('4:00 PM', this)" class="time-btn px-2.5 py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold">4:00 PM</button>
+              <button type="button" onclick="selectBookingTime('5:00 PM', this)" class="time-btn px-2.5 py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold">5:00 PM</button>
+              <button type="button" onclick="selectBookingTime('6:00 PM', this)" class="time-btn active-time px-2.5 py-2 rounded-lg border border-ink bg-ink text-white text-xs font-bold">6:00 PM</button>
+              <button type="button" onclick="selectBookingTime('7:00 PM', this)" class="time-btn px-2.5 py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold">7:00 PM</button>
+              <button type="button" onclick="selectBookingTime('8:00 PM', this)" class="time-btn px-2.5 py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold">8:00 PM</button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <span class="text-[11px] font-medium text-zinc-500 block mb-1.5">Duration</span>
+                <div class="grid grid-cols-3 gap-2">
+                  <button type="button" onclick="selectDuration(1, this)" class="dur-btn active-dur py-2 rounded-lg border border-ink bg-ink text-white text-xs font-bold">1 Hr</button>
+                  <button type="button" onclick="selectDuration(2, this)" class="dur-btn py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold">2 Hrs</button>
+                  <button type="button" onclick="selectDuration(3, this)" class="dur-btn py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold">3 Hrs</button>
+                </div>
+              </div>
+              <div>
+                <span class="text-[11px] font-medium text-zinc-500 block mb-1.5">Players</span>
+                <div class="grid grid-cols-4 gap-1.5">
+                  <button type="button" onclick="selectPlayers(1, this)" class="plr-btn active-plr py-2 rounded-lg border border-ink bg-ink text-white text-xs font-bold">1P</button>
+                  <button type="button" onclick="selectPlayers(2, this)" class="plr-btn py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold">2P</button>
+                  <button type="button" onclick="selectPlayers(3, this)" class="plr-btn py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold">3P</button>
+                  <button type="button" onclick="selectPlayers(4, this)" class="plr-btn py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold">4P</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Player Info -->
+          <div class="pt-4 border-t border-borderlight grid sm:grid-cols-2 gap-3.5">
+            <div>
+              <label class="text-xs font-semibold text-zinc-700 block mb-1.5">Player Full Name</label>
+              <input id="playerNameInput" type="text" placeholder="e.g. Rohan Deshmukh" value="Rohan Deshmukh" class="w-full px-3.5 py-2.5 rounded-xl bg-subtle border border-borderlight text-sm text-ink focus:outline-none focus:border-ink" />
+            </div>
+            <div>
+              <label class="text-xs font-semibold text-zinc-700 block mb-1.5">WhatsApp Number (For Digital Pass)</label>
+              <input id="playerPhoneInput" type="tel" placeholder="+91 98XXXXXXXX" value="+91 98230 45120" class="w-full px-3.5 py-2.5 rounded-xl bg-subtle border border-borderlight text-sm text-ink focus:outline-none focus:border-ink" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Sticky Summary & Mandatory UPI Advance (5 Cols - High-Contrast Carbon Card) -->
+        <div class="lg:col-span-5 bg-ink text-white border border-zinc-800 rounded-2xl p-6 space-y-5 sticky top-24 shadow-xl">
+          <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+            <h3 class="font-display font-bold text-lg text-white">Booking Summary</h3>
+            <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[11px] font-bold">Instant Lock</span>
+          </div>
+
+          <div class="space-y-2.5 text-sm">
+            <div class="flex justify-between">
+              <span class="text-zinc-400">Station</span>
+              <span id="summaryStation" class="font-bold text-white">PS5-01 (Gaming)</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-zinc-400">Date &amp; Time</span>
+              <span id="summaryDateTime" class="font-semibold text-zinc-200">Today, 23 Nov • 6:00 PM</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-zinc-400">Duration &amp; Squad</span>
+              <span id="summaryDurationPlayers" class="font-semibold text-zinc-200">1 Hr • 1 Player</span>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-zinc-800 space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-zinc-400">Estimated Session Total</span>
+              <span id="summaryTotal" class="font-bold text-white">₹150</span>
+            </div>
+            <div class="flex justify-between text-red-400 font-bold">
+              <span>Mandatory Advance Deposit</span>
+              <span>₹100</span>
+            </div>
+            <div class="flex justify-between text-xs text-zinc-400">
+              <span>Balance Payable at Café Counter</span>
+              <span id="summaryBalance">₹50</span>
+            </div>
+          </div>
+
+          <button onclick="initiateUpiBooking()" class="w-full py-3.5 px-5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-sm transition shadow-lg shadow-red-600/30 flex items-center justify-center gap-2">
+            <span>Pay ₹100 Advance via UPI</span>
+            <span>→</span>
+          </button>
+
+          <p class="text-[11px] text-zinc-400 text-center leading-relaxed">
+            Supports GPay, PhonePe, Paytm &amp; BHIM UPI. ₹100 advance is 100% adjusted against your final gaming + café bill.
+          </p>
+
+          <!-- Confirmed Pass Preview (Appears after simulated UPI payment) -->
+          <div id="confirmedPassCard" class="hidden p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/40 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-emerald-400 uppercase tracking-wider">✓ Booking Confirmed</span>
+              <span id="passBookingId" class="text-xs font-mono text-zinc-300">#MV-8492</span>
+            </div>
+            <p id="passDetailsText" class="text-xs text-zinc-200 leading-relaxed"></p>
+            <p class="text-[11px] text-emerald-300/90">WhatsApp receipt dispatched. Station is now locked in Owner Control Center.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: IN-CAFE QR FOOD & BEVERAGE ORDERING -->
+    <section id="cafe" class="py-16 sm:py-20 bg-white border-y border-borderlight">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-red-600">04 / Order to Your Controller</span>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-ink mt-1">Café Menu &amp; Station QR Ordering</h2>
+            <p class="text-sm text-zinc-600 mt-1">Scan the QR sticker at your console or simulator—your order goes straight to the kitchen tagged with your station.</p>
+          </div>
+
+          <!-- Simulated QR Table/Station Selector -->
+          <div class="bg-subtle border border-borderlight rounded-xl px-4 py-2.5 flex items-center gap-3">
+            <span class="text-xs font-bold text-zinc-600">Ordering From QR:</span>
+            <select id="qrStationSelect" class="bg-white border border-borderlight rounded-lg px-3 py-1.5 text-xs font-bold text-ink focus:outline-none">
+              <option value="PS5-01">PS5-01 (Lounge 1)</option>
+              <option value="PS5-02" selected>PS5-02 (Lounge 2)</option>
+              <option value="PS5-03">PS5-03 (Lounge 3)</option>
+              <option value="Sim-01">Sim-01 (Racing Cockpit 1)</option>
+              <option value="Sim-02">Sim-02 (Racing Cockpit 2)</option>
+              <option value="RC-Track">RC Play Arena</option>
+              <option value="Cafe-Table-02">Café Table 02</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          <!-- Menu Cards Grid (8 Cols) -->
+          <div class="lg:col-span-8 grid sm:grid-cols-2 gap-4" id="cafeMenuGrid">
+            <!-- Populated via JS with high-res food/coffee photography -->
+          </div>
+
+          <!-- Live Station Tab Cart (4 Cols) -->
+          <div class="lg:col-span-4 bg-subtle border border-borderlight rounded-2xl p-5 sticky top-24 space-y-4">
+            <div class="flex items-center justify-between border-b border-borderlight pb-3">
+              <div>
+                <h3 class="font-display font-bold text-base text-ink">Your Station Tab</h3>
+                <p class="text-xs text-zinc-500">Added directly to your unified checkout bill</p>
+              </div>
+              <span id="cartCountBadge" class="px-2.5 py-1 rounded-full bg-ink text-white font-extrabold text-xs">0 Items</span>
+            </div>
+
+            <div id="cartItemsList" class="space-y-2.5 min-h-[110px] flex flex-col justify-center">
+              <p class="text-xs text-zinc-500 text-center py-6">Your station food tab is empty. Add a combo or cold brew!</p>
+            </div>
+
+            <div class="pt-3 border-t border-borderlight space-y-3">
+              <div class="flex justify-between text-sm font-bold">
+                <span class="text-zinc-700">F&amp;B Subtotal</span>
+                <span id="cartTotalAmount" class="text-ink">₹0</span>
+              </div>
+              <button onclick="submitStationFoodOrder()" class="w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs sm:text-sm transition shadow-md">
+                Send Order to Kitchen Queue →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: TOURNAMENTS HUB -->
+    <section id="tournaments" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-red-600">05 / Esports &amp; Track Challenges</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-ink mt-1">Weekend Glory Awaits</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Tournament 1 -->
+        <div class="bg-white border border-borderlight rounded-2xl overflow-hidden flex flex-col sm:flex-row shadow-sm hover:shadow-lg transition">
+          <div class="sm:w-2/5 relative min-h-[180px] bg-ink">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/400x400/141417/DC2626?text=EA+FC+25+CUP'" alt="EA FC 25 Cup" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6 sm:w-3/5 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between text-xs">
+                <span class="px-2 py-0.5 rounded bg-ink text-white font-bold">EA FC 25</span>
+                <span class="text-zinc-500 font-medium">Sat, 28 Nov • 4:00 PM</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-ink mt-2">Multiverse Knockout Cup</h3>
+              <p class="text-xs text-zinc-600 mt-1">1v1 Knockout • 6-min halves • PS5 4K Pods</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-borderlight">
+              <div>
+                <span class="text-[10px] uppercase text-zinc-500 font-semibold block">Prize Pool</span>
+                <span class="font-display font-extrabold text-lg text-red-600">₹10,000</span>
+              </div>
+              <div>
+                <span class="text-[10px] uppercase text-zinc-500 font-semibold block">Entry Fee</span>
+                <span class="font-bold text-sm text-ink">₹299</span>
+              </div>
+              <button onclick="showToast('Tournament registration modal opened for EA FC 25 Knockout Cup!')" class="px-4 py-2 rounded-xl bg-ink hover:bg-zinc-800 text-white font-bold text-xs">
+                Register Squad
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tournament 2 -->
+        <div class="bg-white border border-borderlight rounded-2xl overflow-hidden flex flex-col sm:flex-row shadow-sm hover:shadow-lg transition">
+          <div class="sm:w-2/5 relative min-h-[180px] bg-ink">
+            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=600&q=80" onerror="this.src='https://placehold.co/400x400/141417/FFFFFF?text=FORZA+TIME+TRIAL'" alt="Forza Racing Challenge" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6 sm:w-3/5 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between text-xs">
+                <span class="px-2 py-0.5 rounded bg-red-600 text-white font-bold">FORZA &amp; F1 24</span>
+                <span class="text-zinc-500 font-medium">Sun, 29 Nov • 3:00 PM</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-ink mt-2">Fastest Sim Lap Challenge</h3>
+              <p class="text-xs text-zinc-600 mt-1">3 Timed Hotlaps • Direct-Drive Cockpit</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-borderlight">
+              <div>
+                <span class="text-[10px] uppercase text-zinc-500 font-semibold block">Prize Pool</span>
+                <span class="font-display font-extrabold text-lg text-red-600">₹7,500</span>
+              </div>
+              <div>
+                <span class="text-[10px] uppercase text-zinc-500 font-semibold block">Entry Fee</span>
+                <span class="font-bold text-sm text-ink">₹199</span>
+              </div>
+              <button onclick="showToast('Tournament registration modal opened for Fastest Sim Lap Challenge!')" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs">
+                Book Hotlap
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER (HIGH-CONTRAST BLACK) -->
+    <footer class="bg-ink text-white border-t border-zinc-800 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <span class="font-display font-extrabold text-lg text-white">MULTIVERSE GAMING ZONE &amp; CAFE</span>
+          <p class="text-xs text-zinc-400 mt-1">PS5 4K Lounges • Pro Racing Simulators • Indoor RC Play • Artisanal Café</p>
+          <p class="text-xs text-zinc-500 mt-1">Open Daily: 11:00 AM – 12:00 AM • Powered by multiversecafe.in</p>
+        </div>
+        <div class="flex flex-wrap gap-3 text-xs">
+          <button onclick="toggleAdminMode()" class="px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold transition">
+            Open Owner Control Center →
+          </button>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- OWNER CONTROL CENTER VIEW (CRISP WHITE / BLACK / GREY / RED POS UI)   -->
+  <!-- ===================================================================== -->
+  <section id="adminView" class="hidden min-h-screen bg-canvas py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- PIN Lock Screen -->
+      <div id="adminPinGate" class="max-w-md mx-auto my-16 bg-white border border-borderlight rounded-2xl p-8 text-center shadow-xl">
+        <div class="w-12 h-12 rounded-2xl bg-ink text-white flex items-center justify-center mx-auto text-xl font-bold mb-4">
+          🔒
+        </div>
+        <h2 class="font-display font-extrabold text-2xl text-ink">Owner Control Center</h2>
+        <p class="text-xs text-zinc-500 mt-1.5">Enter 4-digit owner PIN to manage station booking locks, live kitchen tabs, and slow-hour insights.</p>
+        <div class="mt-6">
+          <input id="adminPinInput" type="password" maxlength="4" value="1234" class="w-40 text-center tracking-[0.5em] font-mono text-xl font-bold px-4 py-3 rounded-xl bg-subtle border border-borderlight text-ink focus:outline-none focus:border-ink" />
+          <p class="text-[11px] text-zinc-500 mt-2">Demo PIN pre-filled: <span class="text-red-600 font-bold">1234</span></p>
+        </div>
+        <button onclick="unlockAdminDashboard()" class="mt-5 w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-sm transition">
+          Unlock Live Dashboard
+        </button>
+      </div>
+
+      <!-- Unlocked Admin Dashboard -->
+      <div id="adminDashboardContent" class="hidden space-y-8">
+        <!-- Top Admin Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-borderlight">
+          <div>
+            <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+              <span>Synced Live with Customer Booking Site</span>
+            </div>
+            <h1 class="font-display font-extrabold text-2xl sm:text-3xl text-ink mt-1">Owner Control Center</h1>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="switchMainView('customer')" class="px-4 py-2 rounded-xl bg-ink hover:bg-zinc-800 text-white font-bold text-xs">
+              ← View Customer Site
+            </button>
+            <button onclick="lockAdminDashboard()" class="px-3.5 py-2 rounded-xl bg-white border border-borderlight text-zinc-700 text-xs font-semibold hover:text-ink">
+              Lock PIN
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Summary Row -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-white border border-borderlight rounded-2xl p-4 shadow-sm">
+            <span class="text-xs font-medium text-zinc-500">Confirmed Bookings Today</span>
+            <p id="kpiBookingsCount" class="font-display font-extrabold text-2xl text-ink mt-1">5</p>
+            <span class="text-[11px] font-semibold text-emerald-600">+2 from online UPI lock</span>
+          </div>
+          <div class="bg-white border border-borderlight rounded-2xl p-4 shadow-sm">
+            <span class="text-xs font-medium text-zinc-500">UPI Advances Collected</span>
+            <p id="kpiAdvanceTotal" class="font-display font-extrabold text-2xl text-red-600 mt-1">₹500</p>
+            <span class="text-[11px] text-zinc-500">100% settled to bank</span>
+          </div>
+          <div class="bg-white border border-borderlight rounded-2xl p-4 shadow-sm">
+            <span class="text-xs font-medium text-zinc-500">Active Kitchen Queue</span>
+            <p id="kpiKitchenCount" class="font-display font-extrabold text-2xl text-ink mt-1">2</p>
+            <span class="text-[11px] font-semibold text-zinc-600">Station QR orders</span>
+          </div>
+          <div class="bg-white border border-borderlight rounded-2xl p-4 shadow-sm">
+            <span class="text-xs font-medium text-zinc-500">Open F&amp;B Station Tabs</span>
+            <p id="kpiTabTotal" class="font-display font-extrabold text-2xl text-ink mt-1">₹640</p>
+            <span class="text-[11px] text-zinc-500">Merged at checkout</span>
+          </div>
+        </div>
+
+        <!-- 1. MANUAL BOOKING OVERRIDE & STATION CONTROL GRID -->
+        <div class="bg-white border border-borderlight rounded-2xl p-5 sm:p-6 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+            <div>
+              <h2 class="font-display font-bold text-lg text-ink">Station Control &amp; Manual Booking Override</h2>
+              <p class="text-xs text-zinc-600">Flip any PS5, Racing Sim, or RC station to <strong class="text-red-600">"Mark as Booked"</strong> to instantly block it on the customer website (for walk-ins, VIP holds, or demand control).</p>
+            </div>
+          </div>
+
+          <div id="adminStationsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+        <!-- 2. LIVE KITCHEN ORDER QUEUE + RECENT BOOKINGS -->
+        <div class="grid lg:grid-cols-12 gap-6">
+          <!-- Kitchen Queue (7 Cols) -->
+          <div class="lg:col-span-7 bg-white border border-borderlight rounded-2xl p-5 sm:p-6 shadow-sm">
+            <h2 class="font-display font-bold text-lg text-ink mb-1">Live Kitchen &amp; Station QR Queue</h2>
+            <p class="text-xs text-zinc-500 mb-4">Orders placed via station QR codes appear here tagged with the exact seat.</p>
+            <div id="adminKitchenList" class="space-y-3">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+          <!-- Recent Confirmed Bookings (5 Cols) -->
+          <div class="lg:col-span-5 bg-white border border-borderlight rounded-2xl p-5 sm:p-6 shadow-sm">
+            <h2 class="font-display font-bold text-lg text-ink mb-1">Confirmed UPI Slot Bookings</h2>
+            <p class="text-xs text-zinc-500 mb-4">Locked via ₹100 UPI advance deposit.</p>
+            <div id="adminBookingsList" class="space-y-3">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. LOW-BOOKING DETECTION & SMART PROMO INSIGHTS -->
+        <div class="grid lg:grid-cols-12 gap-6">
+          <!-- Occupancy Heatmap (6 Cols) -->
+          <div class="lg:col-span-6 bg-white border border-borderlight rounded-2xl p-5 sm:p-6 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h2 class="font-display font-bold text-lg text-ink">Weekly Occupancy Heatmap</h2>
+                <p class="text-xs text-zinc-500">Automatically flags low-booking hours across PS5 &amp; Sim stations</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg bg-red-50 border border-red-200 text-red-600 text-[11px] font-bold">Slow Hours Detected</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-center text-xs border-separate border-spacing-1.5">
+                <thead>
+                  <tr class="text-zinc-500">
+                    <th class="text-left font-semibold">Day</th>
+                    <th>12 PM</th>
+                    <th>2 PM</th>
+                    <th>4 PM</th>
+                    <th>6 PM</th>
+                    <th>8 PM</th>
+                    <th>10 PM</th>
+                  </tr>
+                </thead>
+                <tbody class="font-bold">
+                  <tr>
+                    <td class="text-left text-ink font-semibold">Mon</td>
+                    <td class="p-2 rounded bg-red-100 text-red-700 border border-red-200">20%</td>
+                    <td class="p-2 rounded bg-red-100 text-red-700 border border-red-200">24%</td>
+                    <td class="p-2 rounded bg-zinc-200 text-zinc-700">52%</td>
+                    <td class="p-2 rounded bg-ink text-white">84%</td>
+                    <td class="p-2 rounded bg-ink text-white">92%</td>
+                    <td class="p-2 rounded bg-zinc-200 text-zinc-700">68%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left text-ink font-semibold">Tue</td>
+                    <td class="p-2 rounded bg-red-100 text-red-700 border border-red-200">18%</td>
+                    <td class="p-2 rounded bg-red-100 text-red-700 border border-red-200">22%</td>
+                    <td class="p-2 rounded bg-zinc-200 text-zinc-700">48%</td>
+                    <td class="p-2 rounded bg-ink text-white">80%</td>
+                    <td class="p-2 rounded bg-ink text-white">90%</td>
+                    <td class="p-2 rounded bg-zinc-200 text-zinc-700">65%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left text-ink font-semibold">Wed</td>
+                    <td class="p-2 rounded bg-red-100 text-red-700 border border-red-200">25%</td>
+                    <td class="p-2 rounded bg-red-100 text-red-700 border border-red-200">21%</td>
+                    <td class="p-2 rounded bg-zinc-200 text-zinc-700">55%</td>
+                    <td class="p-2 rounded bg-ink text-white">86%</td>
+                    <td class="p-2 rounded bg-ink text-white">94%</td>
+                    <td class="p-2 rounded bg-zinc-800 text-white">76%</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left text-ink font-semibold">Sat</td>
+                    <td class="p-2 rounded bg-zinc-200 text-zinc-700">58%</td>
+                    <td class="p-2 rounded bg-zinc-800 text-white">78%</td>
+                    <td class="p-2 rounded bg-ink text-white">95%</td>
+                    <td class="p-2 rounded bg-ink text-white">98%</td>
+                    <td class="p-2 rounded bg-ink text-white">100%</td>
+                    <td class="p-2 rounded bg-ink text-white">92%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-4 flex items-center gap-4 text-[11px] text-zinc-500">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-red-200 border border-red-300"></span> Under 30% (Slow Window)</span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-zinc-200"></span> Moderate</span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-ink"></span> Peak</span>
+            </div>
+          </div>
+
+          <!-- Smart Promo Suggestions (6 Cols) -->
+          <div class="lg:col-span-6 bg-white border border-borderlight rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+            <div>
+              <h2 class="font-display font-bold text-lg text-ink">Smart Off-Peak Promo Suggestions</h2>
+              <p class="text-xs text-zinc-500">Actionable ideas generated from your slow-hour patterns.</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-subtle border border-red-200 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-red-600">Alert: Mon–Wed (12 PM – 4 PM) Occupancy at 21%</span>
+                <span class="text-[11px] font-bold text-emerald-600">+₹4,500/wk est.</span>
+              </div>
+              <p class="text-xs text-zinc-700">Suggested Idea: <strong>"College Afternoon Combo — 2 Hrs PS5 + 1 Cold Coffee at ₹299"</strong> (Valid 12 PM–4 PM).</p>
+              <button onclick="showToast('Happy Hour Combo activated on website & WhatsApp promo template ready!')" class="px-3.5 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-bold text-xs">
+                Activate Offer on Website
+              </button>
+            </div>
+
+            <div class="p-4 rounded-xl bg-subtle border border-borderlight space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-ink">Insight: Racing Simulators Idle on Weekday Afternoons</span>
+                <span class="text-[11px] font-bold text-emerald-600">+₹3,200/wk est.</span>
+              </div>
+              <p class="text-xs text-zinc-700">Suggested Idea: <strong>"Wednesday Fastest Lap Leaderboard"</strong> — Top lap time between 1 PM–5 PM wins a free 1-Hr Sim Pass.</p>
+              <button onclick="showToast('Leaderboard challenge banner published to Events Hub!')" class="px-3.5 py-1.5 rounded-lg bg-ink hover:bg-zinc-800 text-white font-bold text-xs">
+                Publish Leaderboard Challenge
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPI ADVANCE PAYMENT MODAL -->
+  <div id="upiModal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white border border-borderlight rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-borderlight pb-3">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-red-600">Razorpay UPI Gateway</span>
+          <h3 class="font-display font-bold text-lg text-ink">Pay ₹100 Slot Lock Advance</h3>
+        </div>
+        <button onclick="closeUpiModal()" class="text-zinc-400 hover:text-ink text-lg font-bold">✕</button>
+      </div>
+
+      <!-- 5-Minute Soft Lock Countdown -->
+      <div class="p-3 rounded-xl bg-red-50 border border-red-200 flex items-center justify-between text-xs">
+        <span class="text-red-700 font-semibold">Station held exclusively for you:</span>
+        <span id="upiCountdownTimer" class="font-mono font-extrabold text-red-600 text-sm">04:59</span>
+      </div>
+
+      <!-- Simulated Dynamic UPI QR -->
+      <div class="bg-subtle border border-borderlight rounded-2xl p-5 text-center space-y-2">
+        <div class="w-40 h-40 mx-auto bg-ink rounded-xl flex flex-col items-center justify-center p-3 border-4 border-white shadow">
+          <svg class="w-28 h-28 text-white" viewBox="0 0 100 100" fill="currentColor">
+            <rect x="10" y="10" width="25" height="25" rx="3" fill="none" stroke="currentColor" stroke-width="6"/>
+            <rect x="17" y="17" width="11" height="11"/>
+            <rect x="65" y="10" width="25" height="25" rx="3" fill="none" stroke="currentColor" stroke-width="6"/>
+            <rect x="72" y="17" width="11" height="11"/>
+            <rect x="10" y="65" width="25" height="25" rx="3" fill="none" stroke="currentColor" stroke-width="6"/>
+            <rect x="17" y="72" width="11" height="11"/>
+            <rect x="45" y="15" width="8" height="8"/>
+            <rect x="45" y="35" width="12" height="12"/>
+            <rect x="65" y="45" width="10" height="10"/>
+            <rect x="45" y="65" width="14" height="8"/>
+            <rect x="70" y="70" width="18" height="18"/>
+          </svg>
+        </div>
+        <p class="text-xs font-bold text-ink">Scan with GPay / PhonePe / Paytm</p>
+        <p class="text-[11px] text-zinc-500">Merchant: Multiverse Gaming Zone &amp; Cafe</p>
+      </div>
+
+      <button onclick="confirmSimulatedUpiPayment()" class="w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-sm transition shadow-lg">
+        ✓ Simulate UPI Payment Success (₹100)
+      </button>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE APPLICATION LOGIC -->
+  <script>
+    // --- STATE STORE (Shared live between Customer View & Owner Control Center) ---
+    const stations = [
+      { id: 'PS5-01', name: 'PS5-01', zone: 'Gaming', rate: 150, unit: 'hr', maxPlayers: 4, manualBooked: false, activeSession: false, fbTab: 0 },
+      { id: 'PS5-02', name: 'PS5-02', zone: 'Gaming', rate: 150, unit: 'hr', maxPlayers: 4, manualBooked: true,  activeSession: true,  fbTab: 460 },
+      { id: 'PS5-03', name: 'PS5-03', zone: 'Gaming', rate: 150, unit: 'hr', maxPlayers: 4, manualBooked: false, activeSession: false, fbTab: 0 },
+      { id: 'Sim-01', name: 'Sim-01', zone: 'Racing', rate: 250, unit: 'hr', maxPlayers: 1, manualBooked: false, activeSession: false, fbTab: 180 },
+      { id: 'Sim-02', name: 'Sim-02', zone: 'Racing', rate: 250, unit: 'hr', maxPlayers: 1, manualBooked: false, activeSession: false, fbTab: 0 },
+      { id: 'RC-Track', name: 'RC Arena', zone: 'RC Play', rate: 200, unit: 'session', maxPlayers: 2, manualBooked: false, activeSession: false, fbTab: 0 }
+    ];
+
+    const cafeMenu = [
+      {
+        id: 'm1',
+        name: 'Multiverse Nitro Cold Coffee',
+        category: 'Cold Coffee',
+        price: 140,
+        desc: 'Velvety 18-hour steeped cold brew served chilled with a spill-proof gamer lid.',
+        img: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'm2',
+        name: 'Pit-Stop Peri-Peri Fries & Nuggets',
+        category: 'Finger Food',
+        price: 180,
+        desc: 'Crispy peri-peri fries & golden chicken/veg bites served with toothpicks for mess-free play.',
+        img: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'm3',
+        name: '2-Hr PS5 + 2 Cold Coffees Combo',
+        category: 'Gamer Combo',
+        price: 499,
+        desc: 'Our bestseller! Two hours on any PS5 4K lounge plus two signature cold coffees.',
+        img: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'm4',
+        name: 'Belgian Biscoff Thick Shake',
+        category: 'Shakes',
+        price: 190,
+        desc: 'Rich caramelized Biscoff milkshake topped with whipped cream & biscuit crumble.',
+        img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80'
+      }
+    ];
+
+    let kitchenOrders = [
+      { id: '#102', station: 'Sim-01', items: '1x Peri-Peri Fries & Nuggets', total: 180, status: 'Preparing' },
+      { id: '#101', station: 'PS5-02', items: '2x Nitro Cold Coffee, 1x Peri-Peri Fries', total: 460, status: 'Delivered' }
+    ];
+
+    let confirmedBookings = [
+      { id: '#MV-8410', station: 'PS5-02', customer: 'Aarav Kulkarni', time: 'Today • 6:00 PM (2 Hrs)', advance: 100 },
+      { id: '#MV-8409', station: 'Sim-01', customer: 'Sneha Patil', time: 'Today • 7:00 PM (1 Hr)', advance: 100 }
+    ];
+
+    let bookingState = {
+      stationId: 'PS5-01',
+      date: 'Today, 23 Nov',
+      time: '6:00 PM',
+      duration: 1,
+      players: 1
+    };
+
+    let cart = [];
+    let upiTimerInterval = null;
+    let suggestedAltStationId = null;
+
+    // --- INITIALIZE RENDER ---
+    function initApp() {
+      renderHeroTicker();
+      renderStationSelector();
+      updateBookingSummary();
+      renderCafeMenu();
+      renderAdminDashboard();
+    }
+
+    // --- VIEW SWITCHING (CUSTOMER <-> ADMIN) ---
+    function toggleAdminMode() {
+      const adminView = document.getElementById('adminView');
+      if (adminView.classList.contains('hidden')) {
+        switchMainView('admin');
+      } else {
+        switchMainView('customer');
+      }
+    }
+
+    function switchMainView(view) {
+      const customerView = document.getElementById('customerView');
+      const adminView = document.getElementById('adminView');
+      const customerNavLinks = document.getElementById('customerNavLinks');
+      const toggleText = document.getElementById('viewToggleText');
+
+      if (view === 'admin') {
+        customerView.classList.add('hidden');
+        customerNavLinks.classList.add('hidden');
+        adminView.classList.remove('hidden');
+        toggleText.textContent = 'Back to Customer Site';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        adminView.classList.add('hidden');
+        customerView.classList.remove('hidden');
+        customerNavLinks.classList.remove('hidden');
+        toggleText.textContent = 'Owner Admin Demo';
+        renderHeroTicker();
+        renderStationSelector();
+        updateBookingSummary();
+      }
+    }
+
+    function unlockAdminDashboard() {
+      const pin = document.getElementById('adminPinInput').value;
+      if (pin === '1234') {
+        document.getElementById('adminPinGate').classList.add('hidden');
+        document.getElementById('adminDashboardContent').classList.remove('hidden');
+        renderAdminDashboard();
+        showToast('Owner Control Center unlocked.');
+      } else {
+        showToast('Incorrect PIN. Use demo PIN: 1234');
+      }
+    }
+
+    function lockAdminDashboard() {
+      document.getElementById('adminDashboardContent').classList.add('hidden');
+      document.getElementById('adminPinGate').classList.remove('hidden');
+    }
+
+    // --- RENDER HERO LIVE TICKER ---
+    function renderHeroTicker() {
+      const container = document.getElementById('heroLiveTicker');
+      container.innerHTML = stations.map(st => {
+        const isBusy = st.manualBooked;
+        return `
+          <div class="px-3 py-1.5 rounded-xl bg-subtle border ${isBusy ? 'border-red-200 bg-red-50/70' : 'border-borderlight'} flex items-center gap-2 text-xs">
+            <span class="w-2 h-2 rounded-full ${isBusy ? 'bg-red-600' : 'bg-emerald-500'}"></span>
+            <span class="font-bold text-ink">${st.name}:</span>
+            <span class="${isBusy ? 'text-red-600 font-bold' : 'text-emerald-700 font-semibold'}">${isBusy ? 'Booked / Full' : 'Available'}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- RENDER BOOKING STATION GRID ---
+    function renderStationSelector() {
+      const grid = document.getElementById('stationSelectorGrid');
+      grid.innerHTML = stations.map(st => {
+        const isSelected = bookingState.stationId === st.id;
+        const isBooked = st.manualBooked;
+        return `
+          <button type="button" onclick="selectStation('${st.id}')"
+            class="p-3.5 rounded-xl border text-left transition relative ${
+              isBooked
+                ? 'bg-red-50/60 border-red-200 opacity-85'
+                : isSelected
+                  ? 'bg-ink text-white border-ink shadow-md'
+                  : 'bg-subtle border-borderlight hover:border-zinc-400 text-ink'
+            }">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider ${isBooked ? 'text-red-600' : isSelected ? 'text-red-400' : 'text-zinc-500'}">${st.zone}</span>
+              <span class="text-[10px] font-extrabold px-1.5 py-0.5 rounded ${isBooked ? 'bg-red-600 text-white' : isSelected ? 'bg-white/15 text-emerald-300' : 'bg-emerald-100 text-emerald-800'}">
+                ${isBooked ? 'BOOKED' : 'OPEN'}
+              </span>
+            </div>
+            <div class="font-display font-bold text-base ${isSelected && !isBooked ? 'text-white' : 'text-ink'}">${st.name}</div>
+            <div class="text-[11px] ${isSelected && !isBooked ? 'text-zinc-300' : 'text-zinc-500'} mt-0.5">₹${st.rate}/${st.unit} • ${st.maxPlayers}P max</div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function preselectStation(id) {
+      selectStation(id);
+    }
+
+    function selectStation(id) {
+      const station = stations.find(s => s.id === id);
+      if (!station) return;
+
+      const conflictBanner = document.getElementById('conflictBanner');
+      if (station.manualBooked) {
+        const alt = stations.find(s => !s.manualBooked && s.zone === station.zone) || stations.find(s => !s.manualBooked);
+        if (alt) {
+          suggestedAltStationId = alt.id;
+          document.getElementById('conflictMessage').textContent = `${station.name} is currently booked or held by the lounge desk.`;
+          document.getElementById('switchAlternativeBtn').textContent = `Switch to ${alt.name} (Open)`;
+          conflictBanner.classList.remove('hidden');
+        }
+        return;
+      }
+
+      conflictBanner.classList.add('hidden');
+      bookingState.stationId = id;
+      renderStationSelector();
+      updateBookingSummary();
+    }
+
+    function applyAlternativeStation() {
+      if (suggestedAltStationId) {
+        selectStation(suggestedAltStationId);
+        showToast(`Switched to open station ${suggestedAltStationId}!`);
+      }
+    }
+
+    function selectBookingDate(dateStr, btn) {
+      bookingState.date = dateStr;
+      document.querySelectorAll('.date-btn').forEach(b => {
+        b.className = 'date-btn px-3 py-2.5 rounded-xl border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold hover:border-zinc-400';
+      });
+      btn.className = 'date-btn active-date px-3 py-2.5 rounded-xl border border-ink bg-ink text-white text-xs font-bold';
+      updateBookingSummary();
+    }
+
+    function selectBookingTime(timeStr, btn) {
+      bookingState.time = timeStr;
+      document.querySelectorAll('.time-btn').forEach(b => {
+        b.className = 'time-btn px-2.5 py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold';
+      });
+      btn.className = 'time-btn active-time px-2.5 py-2 rounded-lg border border-ink bg-ink text-white text-xs font-bold';
+      updateBookingSummary();
+    }
+
+    function selectDuration(hrs, btn) {
+      bookingState.duration = hrs;
+      document.querySelectorAll('.dur-btn').forEach(b => {
+        b.className = 'dur-btn py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold';
+      });
+      btn.className = 'dur-btn active-dur py-2 rounded-lg border border-ink bg-ink text-white text-xs font-bold';
+      updateBookingSummary();
+    }
+
+    function selectPlayers(count, btn) {
+      bookingState.players = count;
+      document.querySelectorAll('.plr-btn').forEach(b => {
+        b.className = 'plr-btn py-2 rounded-lg border border-borderlight bg-subtle text-zinc-700 text-xs font-semibold';
+      });
+      btn.className = 'plr-btn active-plr py-2 rounded-lg border border-ink bg-ink text-white text-xs font-bold';
+      updateBookingSummary();
+    }
+
+    function updateBookingSummary() {
+      const station = stations.find(s => s.id === bookingState.stationId) || stations[0];
+      const total = station.unit === 'session' ? station.rate : station.rate * bookingState.duration;
+      const balance = Math.max(0, total - 100);
+
+      document.getElementById('summaryStation').textContent = `${station.name} (${station.zone})`;
+      document.getElementById('summaryDateTime').textContent = `${bookingState.date} • ${bookingState.time}`;
+      document.getElementById('summaryDurationPlayers').textContent = `${bookingState.duration} ${station.unit === 'session' ? 'Session' : 'Hr(s)'} • ${bookingState.players} Player(s)`;
+      document.getElementById('summaryTotal').textContent = `₹${total}`;
+      document.getElementById('summaryBalance').textContent = `₹${balance}`;
+    }
+
+    // --- UPI ADVANCE PAYMENT FLOW ---
+    function initiateUpiBooking() {
+      const station = stations.find(s => s.id === bookingState.stationId);
+      if (station.manualBooked) {
+        selectStation(station.id);
+        return;
+      }
+      document.getElementById('upiModal').classList.remove('hidden');
+      startUpiCountdown();
+    }
+
+    function closeUpiModal() {
+      document.getElementById('upiModal').classList.add('hidden');
+      clearInterval(upiTimerInterval);
+    }
+
+    function startUpiCountdown() {
+      clearInterval(upiTimerInterval);
+      let seconds = 299;
+      const timerEl = document.getElementById('upiCountdownTimer');
+      upiTimerInterval = setInterval(() => {
+        seconds--;
+        const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+        const s = String(seconds % 60).padStart(2, '0');
+        timerEl.textContent = `${m}:${s}`;
+        if (seconds <= 0) closeUpiModal();
+      }, 1000);
+    }
+
+    function confirmSimulatedUpiPayment() {
+      closeUpiModal();
+      const station = stations.find(s => s.id === bookingState.stationId);
+      const playerName = document.getElementById('playerNameInput').value || 'Guest Player';
+      const bookingCode = '#MV-' + Math.floor(8500 + Math.random() * 900);
+
+      station.manualBooked = true;
+
+      confirmedBookings.unshift({
+        id: bookingCode,
+        station: station.name,
+        customer: playerName,
+        time: `${bookingState.date} • ${bookingState.time} (${bookingState.duration}h)`,
+        advance: 100
+      });
+
+      const passCard = document.getElementById('confirmedPassCard');
+      document.getElementById('passBookingId').textContent = bookingCode;
+      document.getElementById('passDetailsText').textContent = `${playerName} — ${station.name} locked for ${bookingState.date} at ${bookingState.time}. ₹100 UPI advance received.`;
+      passCard.classList.remove('hidden');
+
+      renderHeroTicker();
+      renderStationSelector();
+      renderAdminDashboard();
+      showToast(`₹100 UPI Verified! ${station.name} is now locked.`);
+    }
+
+    // --- CAFE MENU & STATION QR ORDERING ---
+    function renderCafeMenu() {
+      const grid = document.getElementById('cafeMenuGrid');
+      grid.innerHTML = cafeMenu.map(item => `
+        <div class="bg-white border border-borderlight rounded-2xl overflow-hidden flex flex-col justify-between hover:border-ink/40 hover:shadow-md transition">
+          <div>
+            <div class="h-36 relative overflow-hidden bg-ink">
+              <img src="${item.img}" onerror="this.src='https://placehold.co/600x350/141417/FFFFFF?text=${encodeURIComponent(item.name)}'" alt="${item.name}" class="w-full h-full object-cover" />
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-white/95 text-[10px] font-bold text-ink shadow-sm">${item.category}</span>
+            </div>
+            <div class="p-4">
+              <div class="flex items-start justify-between gap-2">
+                <h4 class="font-display font-bold text-sm text-ink">${item.name}</h4>
+                <span class="font-display font-extrabold text-sm text-red-600">₹${item.price}</span>
+              </div>
+              <p class="text-xs text-zinc-600 mt-1.5 leading-relaxed">${item.desc}</p>
+            </div>
+          </div>
+          <div class="px-4 pb-4">
+            <button onclick="addToCart('${item.id}')" class="w-full py-2 rounded-xl bg-subtle hover:bg-ink hover:text-white border border-borderlight text-xs font-bold text-ink transition">
+              + Add to Station Tab
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(itemId) {
+      const item = cafeMenu.find(m => m.id === itemId);
+      if (!item) return;
+      const existing = cart.find(c => c.id === itemId);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ ...item, qty: 1 });
+      }
+      renderCart();
+      showToast(`Added ${item.name} to station tab`);
+    }
+
+    function renderCart() {
+      const listEl = document.getElementById('cartItemsList');
+      const countBadge = document.getElementById('cartCountBadge');
+      const totalEl = document.getElementById('cartTotalAmount');
+
+      const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+      const totalPrice = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+      countBadge.textContent = `${totalQty} Item${totalQty === 1 ? '' : 's'}`;
+      totalEl.textContent = `₹${totalPrice}`;
+
+      if (cart.length === 0) {
+        listEl.innerHTML = `<p class="text-xs text-zinc-500 text-center py-6">Your station food tab is empty. Add a combo or cold brew!</p>`;
+        return;
+      }
+
+      listEl.innerHTML = cart.map(item => `
+        <div class="flex items-center justify-between text-xs bg-white border border-borderlight rounded-xl p-2.5">
+          <div>
+            <p class="font-bold text-ink">${item.name}</p>
+            <p class="text-zinc-500">₹${item.price} × ${item.qty}</p>
+          </div>
+          <span class="font-bold text-red-600">₹${item.price * item.qty}</span>
+        </div>
+      `).join('');
+    }
+
+    function submitStationFoodOrder() {
+      if (cart.length === 0) {
+        showToast('Add at least one item before sending to kitchen!');
+        return;
+      }
+      const stationId = document.getElementById('qrStationSelect').value;
+      const itemsSummary = cart.map(i => `${i.qty}x ${i.name}`).join(', ');
+      const totalAmount = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+      kitchenOrders.unshift({
+        id: '#' + Math.floor(105 + Math.random() * 90),
+        station: stationId,
+        items: itemsSummary,
+        total: totalAmount,
+        status: 'Preparing'
+      });
+
+      const targetStation = stations.find(s => s.id === stationId);
+      if (targetStation) targetStation.fbTab += totalAmount;
+
+      cart = [];
+      renderCart();
+      renderAdminDashboard();
+      showToast(`Order sent to Kitchen for ${stationId}! (Check Owner Admin Demo)`);
+    }
+
+    // --- OWNER ADMIN DASHBOARD RENDER & MANUAL OVERRIDE ---
+    function renderAdminDashboard() {
+      document.getElementById('kpiBookingsCount').textContent = confirmedBookings.length;
+      document.getElementById('kpiAdvanceTotal').textContent = `₹${confirmedBookings.length * 100}`;
+      document.getElementById('kpiKitchenCount').textContent = kitchenOrders.filter(o => o.status === 'Preparing').length;
+      const openTabs = stations.reduce((sum, s) => sum + s.fbTab, 0);
+      document.getElementById('kpiTabTotal').textContent = `₹${openTabs}`;
+
+      // Station Manual Override Grid
+      const grid = document.getElementById('adminStationsGrid');
+      grid.innerHTML = stations.map(st => `
+        <div class="p-4 rounded-xl border ${st.manualBooked ? 'bg-red-50/70 border-red-200' : 'bg-subtle border-borderlight'} space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500">${st.zone}</span>
+              <h4 class="font-display font-extrabold text-lg text-ink">${st.name}</h4>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold ${st.manualBooked ? 'bg-red-600 text-white' : 'bg-emerald-100 text-emerald-800'}">
+              ${st.manualBooked ? 'BOOKED / BLOCKED' : 'AVAILABLE ONLINE'}
+            </span>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-borderlight">
+            <span class="text-xs text-zinc-700 font-semibold">Manual Booking Override</span>
+            <button type="button" onclick="toggleManualStationLock('${st.id}')"
+              class="w-12 h-6 rounded-full transition p-1 ${st.manualBooked ? 'bg-red-600' : 'bg-zinc-300'}">
+              <div class="w-4 h-4 rounded-full bg-white shadow transition transform ${st.manualBooked ? 'translate-x-6' : 'translate-x-0'}"></div>
+            </button>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-zinc-600 pt-1">
+            <span>Open F&amp;B Tab: <strong class="text-ink">₹${st.fbTab}</strong></span>
+            <button onclick="showToast('Consolidated Gaming + F&B Bill generated for ${st.name}!')" class="text-red-600 underline hover:text-red-700 font-bold">
+              Generate Bill
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      // Kitchen Queue
+      const kitchenEl = document.getElementById('adminKitchenList');
+      kitchenEl.innerHTML = kitchenOrders.map((ord, idx) => `
+        <div class="p-3.5 rounded-xl bg-subtle border border-borderlight flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-mono font-bold text-xs text-zinc-500">${ord.id}</span>
+              <span class="px-2 py-0.5 rounded bg-ink text-white font-bold text-xs">${ord.station}</span>
+              <span class="text-xs font-extrabold text-red-600">₹${ord.total}</span>
+            </div>
+            <p class="text-xs text-zinc-700 font-medium mt-1">${ord.items}</p>
+          </div>
+          <button onclick="markOrderDelivered(${idx})"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold ${ord.status === 'Delivered' ? 'bg-emerald-100 text-emerald-800' : 'bg-red-600 text-white hover:bg-red-700'}">
+            ${ord.status === 'Delivered' ? '✓ Delivered' : 'Mark Delivered'}
+          </button>
+        </div>
+      `).join('');
+
+      // Confirmed Bookings
+      const bookingsEl = document.getElementById('adminBookingsList');
+      bookingsEl.innerHTML = confirmedBookings.map(b => `
+        <div class="p-3 rounded-xl bg-subtle border border-borderlight flex items-center justify-between text-xs">
+          <div>
+            <p class="font-bold text-ink">${b.customer} <span class="text-red-600">(${b.station})</span></p>
+            <p class="text-zinc-500 mt-0.5">${b.time}</p>
+          </div>
+          <span class="px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-bold">₹${b.advance} Paid</span>
+        </div>
+      `).join('');
+    }
+
+    function toggleManualStationLock(stationId) {
+      const st = stations.find(s => s.id === stationId);
+      if (!st) return;
+      st.manualBooked = !st.manualBooked;
+      renderAdminDashboard();
+      renderHeroTicker();
+      renderStationSelector();
+      showToast(st.manualBooked
+        ? `${st.name} marked as BOOKED — now hidden from online booking!`
+        : `${st.name} set back to AVAILABLE ONLINE.`
+      );
+    }
+
+    function markOrderDelivered(idx) {
+      kitchenOrders[idx].status = 'Delivered';
+      renderAdminDashboard();
+      showToast(`Order ${kitchenOrders[idx].id} marked delivered to ${kitchenOrders[idx].station}`);
+    }
+
+    // --- TOAST HELPER ---
+    function showToast(msg) {
+      const container = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = 'pointer-events-auto bg-ink border border-zinc-800 text-white text-xs font-semibold px-4 py-3 rounded-xl shadow-2xl flex items-center justify-between gap-3';
+      el.innerHTML = `<span>${msg}</span><button onclick="this.parentElement.remove()" class="text-zinc-400 hover:text-white">✕</button>`;
+      container.appendChild(el);
+      setTimeout(() => el.remove(), 4000);
+    }
+
+    window.onload = initApp;
+  </script>
+</body>
+</html>
